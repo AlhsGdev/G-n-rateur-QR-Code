@@ -4,7 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QR Code Generator</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input.error {
+    border-color: red;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#imgBox {
+    display: none;
+    margin-top: 20px;
+}
+
+#imgBox img {
+    width: 250px;
+    height: 250px;
+}
+
+.watch-link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.watch-link:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 <body>
 
@@ -14,7 +89,7 @@
     <div id="imgBox">
         <img id="qrImage" alt="QR Code">
     </div>
-    <button onclick="generateQR()">Generate QR Code</button>
+    <button id="generateBtn">Generate QR Code</button>
     <a href="https://www.youtube.com/channel/UCkjoHfkLEy7ZT4bA2myJ8xA?sub_confirmation=1" class="watch-link" target="_blank">Watch More Videos</a>
 </div>
 
@@ -22,16 +97,17 @@
 const qrText = document.getElementById("qrText");
 const qrImage = document.getElementById("qrImage");
 const imgBox = document.getElementById("imgBox");
+const generateBtn = document.getElementById("generateBtn");
 
-function generateQR() {
+generateBtn.addEventListener("click", () => {
     if (qrText.value.trim().length > 0) {
         qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(qrText.value);
-        imgBox.classList.add("show-img");  // ajoute la classe pour afficher
+        imgBox.style.display = "block";
     } else {
         qrText.classList.add("error");
         setTimeout(() => qrText.classList.remove("error"), 1000);
     }
-}
+});
 </script>
 
 </body>
