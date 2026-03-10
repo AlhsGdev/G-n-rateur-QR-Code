@@ -17,19 +17,12 @@ body {
     width: 300px;
 }
 
-.container p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
 input[type="text"] {
     width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin-bottom: 15px;
-    font-size: 14px;
-    box-sizing: border-box;
 }
 
 input.error {
@@ -52,7 +45,6 @@ button {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
 }
 
 button:hover {
@@ -60,8 +52,8 @@ button:hover {
 }
 
 #imgBox {
-    margin-top: 20px;
     display: none;
+    margin-top: 20px;
 }
 
 #imgBox.show-img {
