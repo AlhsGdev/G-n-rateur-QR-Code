@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -19,19 +19,19 @@
 </div>
 
 <script>
-    const qrText = document.getElementById("qrText");
-    const qrImage = document.getElementById("qrImage");
-    const imgBox = document.getElementById("imgBox");
+const qrText = document.getElementById("qrText");
+const qrImage = document.getElementById("qrImage");
+const imgBox = document.getElementById("imgBox");
 
-    function generateQR() {
-        if (qrText.value.trim().length > 0) {
-            qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(qrText.value);
-            imgBox.style.display = "block";
-        } else {
-            qrText.classList.add("error");
-            setTimeout(() => qrText.classList.remove("error"), 1000);
-        }
+function generateQR() {
+    if (qrText.value.trim().length > 0) {
+        qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(qrText.value);
+        imgBox.classList.add("show-img");  // ajoute la classe pour afficher
+    } else {
+        qrText.classList.add("error");
+        setTimeout(() => qrText.classList.remove("error"), 1000);
     }
+}
 </script>
 
 </body>
